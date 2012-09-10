@@ -13,9 +13,9 @@ body {
 #head {
 	margin-left: auto;
 	margin-right: auto;
-	height: 100px;
-	padding: 35px 0 0;
-	width: 850px;
+	height: 200px;
+	width: 900px;
+	margin-top:20px;
 }
 
 .logo {
@@ -24,8 +24,9 @@ body {
 	background-position: 0 0;
 	background-repeat: no-repeat;
 	height: 80px;
-	position: absolute;
 	width: 300px;
+	float:left;
+	margin-top:10px;
 }
 
 .logo img {
@@ -38,143 +39,209 @@ body {
 	background-image: url("../img/beta.png");
 	background-repeat: no-repeat;
 	height: 50px;
-	margin: -20px 0 0 300px;
-	position: absolute;
+	margin: -5px 0 0 0;
 	width: 100px;
 	border: none;
-}
-
-.slogan {
-	background-attachment: scroll;
-	background-color: transparent;
-	background-image: url("../img/slogan.png");
-	background-repeat: no-repeat;
-	height: 50px;
-	margin: 40px 0 0 300px;
-	position: absolute;
-	width: 300px;
+	float:left;
 }
 
 .account {
-	font-size: 16px;
-	color: #aaaaaa;
-	width: 120px;
-	position: relative;
-	margin: -20px 0 0 620px;
-	list-style: none outside none;
+	font-size: 20px;
+	color: #aaa;
+	width: 260px;
+	margin: 20px 0 0 100px;
+	float:right;
 }
 
-.account li {
-	display: inline;
-	padding-right: 5px;
-	color: #26ADF5;
-}
-
-.account li a {
-	padding: 5px 8px;
+.account a {
+	display:block;
 	text-decoration: none;
-	color: #26ADF5;
+	color: #fff;
+	background: #26ADF5;
+	cursor: pointer;
+	transition: all 0.25s ease-in-out;
+	-webkit-transition: all 0.25s ease-in-out;
+	-moz-transition: all 0.25s ease-in-out;
+	float:left;
+	margin-left:2px;
+	text-align:center;
+	line-height:50px;
+}
+
+.login {
+	width:100px;
+	height:50px;
+}
+
+.register {
+	width:100px;
+	height:50px;
+}
+
+.uphead {
+	width:50px;
+	height:50px;
+}
+
+.uphead img {
+	margin-top:5px;
+}
+
+.account a:hover {
+	text-decoration: none;
+	cursor: pointer;
+	background:#038CD5;
+}
+
+img {
+	border: none;
+}
+
+.user {
+	font-size: 20px;
+	height:50px;
+	width: 280px;
+	margin: 20px 0 0 0;
+	float:right;
+	
+}
+
+.avatar {
+	width:50px;
+	height:50px;
+	float:left;
+	background:#26ADF5;
+}
+
+.avatar img {
+	margin-top:5px;
+}
+
+.username {
+	color:#fff;
+	width:100px;
+	height:50px;
+	display:block;
+	float:left;
+	text-align:center;
+	line-height:50px;
+	background:#26ADF5;
+	
+}
+
+.user a {
+	display:block;
+	text-decoration: none;
+	color: #fff;
+	background: #26ADF5;
+	cursor: pointer;
+	transition: all 0.25s ease-in-out;
+	-webkit-transition: all 0.25s ease-in-out;
+	-moz-transition: all 0.25s ease-in-out;
+	float:left;
+	margin-left:2px;
+	text-align:center;
+	line-height:50px;
+	background:#26ADF5;
+}
+
+.signout {
+	width:50px;
+	height:50px;
+	background:#26ADF5;
+}
+.signout img {
+	margin-top:5px;
+}
+
+
+.fllow {
+	
+	padding-top:20px;
+	width:200px;
+	float:right;
+	height:60px;
+	
+}
+
+.fllow a {
+	transition: all 0.25s ease-in-out;
+	-webkit-transition: all 0.25s ease-in-out;
+	-moz-transition: all 0.25s ease-in-out;
+	display:block;
+	background: #26ADF5;
+	text-align:center;
+}
+
+.fllow a:hover {
+	text-decoration: none;
+	cursor: pointer;
+	background:#038CD5;
+}
+
+.fllow .span {
+	float:left;
+	width:70px;
+	height:40px;
+	text-align:center;
+	line-height:40px;
+	color:#26ADF5;
+	font-size:20px;
+}
+
+.weibo {
+	margin-left:2px;
+	float:left;
+	height:40px;
+	width:60px;
+}
+
+.weibo img {
+	text-align:center;
+	vertical-align:middle;
+	margin-top:2px;
+}
+
+.search_box {
+	clear:left;
+	float:left;
+	padding-top:20px;
+	text-align:right;
+	margin-left:50px;
+}
+
+.search_box .searchtext {
+	border: 1px solid #BBB;
+	font-family: "微软雅黑", "Arial"; font-size : 16px;
+	padding: 4px;
+	margin-top: 1px;
+	margin-right: 10px;
+	margin-bottom: 2px;
+	width: 250px;
+	padding-left: 5px;
+	color: #777;
+	height: 30px;
+	font-size: 16px;
+}
+
+.search_box .searchbut {
+	font-family: "微软雅黑";
+	width: 80px;
+	height: 40px;
+	font-size: 20px;
+	background-color: #26ADF5;
+	color: white;
+	border: none;
 	cursor: pointer;
 	transition: all 0.25s ease-in-out;
 	-webkit-transition: all 0.25s ease-in-out;
 	-moz-transition: all 0.25s ease-in-out;
 }
 
-.account li a:hover {
-	text-decoration: none;
-	color: #fff;
-	background: #26ADF5;
-	cursor: pointer;
+.search_box .searchbut:hover {
+	background:#038CD5;
 }
 
-.user {
-	font-size: 16px;
-	color: #26ADF5;
-	position: relative;
-	margin: -20px 0 0 650px;
-	list-style: none outside none;
-	text-align: right;
-	width: 120px;
-}
-
-.uphead {
-	color: #26ADF5;
-	position: relative;
-	margin: -22px 0 0 790px;
-	text-align: center;
-}
-
-.uphead img {
-	border: none;
-}
-
-.follow {
-	height: 40px;
-	margin-top: -24px;
-	width: 150px;
-	float: right;
-	margin-right: -200px;
-}
-
-.follow .txt {
-	font-size: 18px;
-	color: #aaaaaa;
-	width: 110px;
-	position: absolute;
-}
-
-.follow .sina_logo {
-	width: 24px;
-	height: 24px;
-	position: absolute;
-	margin-left: 120px;
-	margin-top: -8px;
-}
-
-.follow .sina_logo img {
-	border: none;
-}
-
-.search_box {
-	width: 300px;
-	height: 60px;
-	margin: 15px 0 0 600px;
-}
-
-.searchtext .searchbut {
-	margin: 0;
-}
-
-.searchtext {
-	margin-top: 27px;
-	margin-left: 20px;
-	position: absolute;
-	font-family: "微软雅黑", "Arial";
-	border: 1px solid #BBB;
-	font-size: 16px;
-	padding: 4px;
-	width: 200px;
-	padding-left: 5px;
-	color: #bbb;
-	height: 36px;
-}
-
-.searchtext :focus {
-	border-color: #26ADF5;
-	box-shadow: 0 0 5px #60caff;
-}
-
-.searchbut {
-	position: absolute;
-	width: 36px;
-	height: 36px;
-	display: block;
-	background: url("../img/search.png") no-repeat;
-	border: none;
-	cursor: pointer;
-	margin-top: 35px;
-	margin-left: 200px;
-}
 
 #body {
 	margin-left: auto;

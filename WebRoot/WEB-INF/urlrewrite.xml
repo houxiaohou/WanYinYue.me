@@ -13,10 +13,6 @@
 		<to type="forward">/index</to>
 	</rule>
 	<rule>
-		<from>/(.*).html</from>
-		<to type="forward">/index</to>
-	</rule>
-	<rule>
 		<from>/about</from>
 		<to type="forward">/about.html</to>
 	</rule>

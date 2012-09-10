@@ -3,61 +3,48 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <div id="head">
 	<div class="logo">
-		<a href=""><img src="http://wanyinyue.me/img/logo.png" /> </a>
+		<a href=""><img src="img/logo.png" /> </a>
 	</div>
-	<div class="beta"></div>
-	<s:if test="#session.USER == null ">
-		<ul class="account">
-			<li class="login">
-				<a href="http://wanyinyue.me/login">登录</a>
-			</li>
-			<li class="register">
-				<a href="http://wanyinyue.me/signup">注册</a>
-			</li>
-		</ul>
+	<div class="beta">
+	</div>
+	<s:if test="#session.USER != ''">
+		<div class="account">
+			<a href="login" class="login">登 录</a>
+			<a href="signup" class="register">注 册</a>
+			<a href="upload" class="uphead"><img src="img/upload.png"
+					width="40px" height="40px" /> </a>
+		</div>
 	</s:if>
 	<s:else>
 		<div class="user">
-			${session.USER.userName}
+			<div class="username" />
+				${session.USER.userName}
+			</div>
+			<div class="avatar">
+				<img src="img/avatar.png" width="40px" height="40px" alt="头像" />
+			</div>
+			<a href="upload" class="uphead" title="上传吉他谱"><img
+					src="img/upload.png" width="40px" height="40px" /> </a>
+			<a href="signout" class="signout" title="退出登录"><img
+					src="img/signout.png" /> </a>
 		</div>
-
 	</s:else>
-	<div class="uphead">
-		<a href="upload"
-			onMouseover="if (window.showUploadGuidelines) showUploadGuidelines(true);"
-			onMouseout="if (window.showUploadGuidelines) showUploadGuidelines(false);"><img
-				src="http://wanyinyue.me/img/upload.png" /> </a>
-	</div>
-	<div id="uploadGuidelines" style="display: none;">
-		<div class="triangleBorder"></div>
-		<div id="uploadGuidelinesBody">
-			点击这里上传你的高清曲谱吧
-		</div>
-	</div>
-	<div class="follow">
-		<div class="txt">
-			关注玩音乐么
-		</div>
-		<div class="sina_logo">
-			<a href="http://weibo.com/wanyinyueme" target="_blank"><img
-					src="http://wanyinyue.me/img/sina_h.png" /> </a>
-		</div>
-	</div>
 	<div class="search_box">
 		<form method="get" onsubmit="return Holder.submit();" action="#">
 			<input name="keyword" id="searchtext" class="searchtext" type="text"
-				onfocus="Holder.focus();"
-				onblur="Holder.blur()"
-				value="输入歌手,歌曲试试看" />
-			<input class="searchbut" type="submit" value="" />
+				onfocus="Holder.focus();" onblur="Holder.blur()" value="输入歌手,歌曲试试看" />
+			<input class="searchbut" type="submit" value="搜 索" />
 		</form>
 	</div>
-	<script>
-function showUploadGuidelines(show) {
-	var element = document.getElementById("uploadGuidelines");
-	element.style.display = show ? "block" : "none";
-}
 
+	<div class="fllow">
+		<div class="span">
+			关注
+		</div>
+		<a href="http://weibo.com/wanyinyueme" class="weibo"> <img
+				src="img/sina.png" alt="" /> </a>
+	</div>
+	<script>
 Holder = new function searchHolder() {
 	var searchText = "输入歌手,歌曲试试看";
 

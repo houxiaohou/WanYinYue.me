@@ -2,7 +2,9 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%
 	String path = request.getContextPath();
-	String basePath = "http://wanyinyue.me";
+	String basePath = request.getScheme() + "://"
+			+ request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD xhtml 1.0 strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -32,8 +34,8 @@
 									<label>
 										用户名
 									</label>
-									<input name="userName" type="text" id="userName" placeholder="可以是中文哦"
-										onblur="AccountManager.checkUserName();" />
+									<input name="userName" type="text" id="userName"
+										placeholder="可以是中文哦" onblur="AccountManager.checkUserName();" />
 									<div class="ajaxMessage" id="userNameMessage"></div>
 								</td>
 							</tr>
@@ -42,8 +44,8 @@
 									<label>
 										邮&nbsp;&nbsp;&nbsp;箱
 									</label>
-									<input name="email" type="text" id="email" placeholder="输入格式正确的邮箱"
-										onblur="AccountManager.checkEmail();" />
+									<input name="email" type="text" id="email"
+										placeholder="输入格式正确的邮箱" onblur="AccountManager.checkEmail();" />
 									<div class="ajaxMessage" id="emailMessage"></div>
 								</td>
 							</tr>
@@ -52,7 +54,8 @@
 									<label>
 										密&nbsp;&nbsp;&nbsp;码
 									</label>
-									<input name="password" type="password" id="password" placeholder="密码长度至少六位"
+									<input name="password" type="password" id="password"
+										placeholder="密码长度至少六位"
 										onblur="AccountManager.checkPassword();" />
 									<div class="ajaxMessage" id="pwdMessage"></div>
 								</td>
