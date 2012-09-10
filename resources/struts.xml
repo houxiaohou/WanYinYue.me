@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.custom.i18n.resources" value="myMessage"></constant>
+
+	<package name="common" extends="struts-default">
+		<action name="index" class="indexAction" method="indexDate">
+			<result name="success">/index2.jsp</result>
+			<result name="error">/index2.jsp</result>
+		</action>
+		<action name="viewTab" class="viewTabAction" method="viewTab">
+			<result name="success">/viewTab.jsp</result>
+			<result name="error">/tabError.jsp</result>
+		</action>
+		<action name="upload" class="uploadAction" method="uploadTab">
+			<result name="success">/uploadSuccess.jsp</result>
+			<result name="login" type="redirect">/login</result>
+			<result name="error">/tabError.jsp</result>
+			<result name="input">/upload.jsp</result>
+		</action>
+		<action name="search" class="searchAction" method="search">
+			<result name="success">/searchResult.jsp</result>
+			<result name="error">/searchError.jsp</result>
+		</action>
+		<action name="postRecord" class="searchAction" method="searchForm">
+			<result name="success">/postSuccess.jsp</result>
+		</action>
+		<action name="buildIndex" class="buildIndexAction" method="buildIndex">
+			<result name="success">/indexSuccess.jsp</result>
+		</action>
+		<action name="login" class="authorizeAction" method="login">
+			<result name="success">/login.jsp</result>
+		</action>
+		<action name="signup" class="authorizeAction" method="signup">
+			<result name="success">/signup.jsp</result>
+		</action>
+		<action name="backStage" class="adminAction" method="backStage">
+			<result name="success">/pages/index.jsp</result>
+			<result name="error" type="redirect">/index</result>
+		</action>
+		<action name="viewUnChecked" class="adminAction" method="viewUnChecked">
+			<result name="success">/pages/viewUnchecked.jsp</result>
+			<result name="error">/tabError.jsp</result> 
+			<result name="noUser" type="redirect">http://localhost</result> 
+		</action>
+		<action name="delete" class="adminAction" method="delete">
+			<result name="success">/tabError.jsp</result>
+			<result name="noUser" type="redirect">http://localhost</result> 
+		</action>
+		<action name="pass" class="adminAction" method="pass">
+			<result name="success" type="redirect">/backStage</result>
+			<result name="error">/tabError.jsp</result>
+			<result name="noUser" type="redirect">http://localhost</result> 
+		</action>
+
+	</package>
+	
+	<package name="ajax" extends="json-default">
+		<action name="authorize" class="authorizeAction" method="User">
+			<result type="json">
+				<param name="excludeNullProperties">error,success,errorMessage</param>
+			</result>
+		</action>
+	</package>
+
+</struts>

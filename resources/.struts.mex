@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Struts2Diagram version="2.0">
+  <package name="common" location="0,0" size="0,0">
+    <action name="index" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="index2.jsp" />
+      </result>
+      <result name="error">
+        <resourceEdge source="error" routing="0" target="index2.jsp" />
+      </result>
+    </action>
+    <action name="viewTab" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="viewTab.jsp" />
+      </result>
+      <result name="error">
+        <resourceEdge source="error" routing="0" target="tabError.jsp" />
+      </result>
+    </action>
+    <action name="upload" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="uploadSuccess.jsp" />
+      </result>
+      <result name="login" />
+      <result name="error" />
+      <result name="input" />
+    </action>
+    <action name="search" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="error" />
+    </action>
+    <action name="postRecord" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="buildIndex" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="login" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="signup" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="backStage" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="error" />
+    </action>
+    <action name="viewUnChecked" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="error" />
+      <result name="noUser" />
+    </action>
+    <action name="delete" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="noUser" />
+    </action>
+    <action name="pass" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="error" />
+      <result name="noUser" />
+    </action>
+  </package>
+  <package name="ajax" location="0,0" size="0,0">
+    <action name="authorize" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+  </package>
+  <webResource name="index2.jsp" path="/index2.jsp" location="0,0" size="0,0" />
+  <webResource name="viewTab.jsp" path="/viewTab.jsp" location="0,0" size="0,0" />
+  <webResource name="tabError.jsp" path="/tabError.jsp" location="0,0" size="0,0" />
+  <webResource name="uploadSuccess.jsp" path="/uploadSuccess.jsp" location="0,0" size="0,0" />
+</Struts2Diagram>
+

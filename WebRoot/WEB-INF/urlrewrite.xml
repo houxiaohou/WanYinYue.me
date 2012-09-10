@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE urlrewrite PUBLIC "-//tuckey.org//DTD UrlRewrite 3.2//EN"
+        "http://tuckey.org/res/dtds/urlrewrite3.2.dtd">
+
+	<!--
+
+		Configuration file for UrlRewriteFilter http://tuckey.org/urlrewrite/
+	-->
+<urlrewrite>
+
+	<rule>
+		<from>/(.*).jsp</from>
+		<to type="forward">/index</to>
+	</rule>
+	<rule>
+		<from>/(.*).html</from>
+		<to type="forward">/index</to>
+	</rule>
+	<rule>
+		<from>/about</from>
+		<to type="forward">/about.html</to>
+	</rule>
+	<rule>
+		<from>/terms</from>
+		<to type="forward">/thanks.html</to>
+	</rule>
+	<rule>
+		<from>/tabs/(\d+)$</from>
+		<to type="forward">/viewTab?id=$1</to>
+	</rule>
+	<rule>
+		<from>/error</from>
+		<to type="forward">/tabError.html</to>
+	</rule>
+	<rule>
+		<from>/tabs/p/(\d+)$</from>
+		<to type="forward">/index?pageNum=$1</to>
+	</rule>
+	
+	<rule>
+		<from>/uploadSuccess</from>
+		<to type="forward">/uploadSuccess.jsp</to>
+	</rule>
+	<rule>
+		<from>/search/([^/]+)$</from>
+		<to type="forward">/search?keyword=$1</to>
+	</rule>
+	<rule>
+		<from>/search/([^/]+)/(p)/(\d+)$</from>
+		<to type="forward">/search?keyword=$1&amp;pageNum=$3</to>
+	</rule>
+	<rule>
+		<from>/authorize(/)?([^/]+)?(/)?([^/]+)?(/)?([^/]+)?(/)?([^/]+)?(/)?([^/]+)?(/)?([^/]+)?(/)?([^/]+)?(/)?([^/]+)?(/)?([^/]+)?(/)?([^/]+)?(/)?([^/]+)?(/)?([^/]+)?$</from>
+		<to type="forward">/authorize?$2&amp;$4&amp;$6&amp;$8&amp;$10&amp;$12&amp;$14&amp;$16&amp;$18&amp;$20&amp;$22&amp;$24</to>
+	</rule>
+
+
+	<!--
+
+		INSTALLATION in your web.xml add... <filter>
+		<filter-name>UrlRewriteFilter</filter-name>
+		<filter-class>org.tuckey.web.filters.urlrewrite.UrlRewriteFilter</filter-class>
+		<init-param> <param-name>logLevel</param-name>
+		<param-value>WARN</param-value> </init-param> </filter>
+		<filter-mapping> <filter-name>UrlRewriteFilter</filter-name>
+		<url-pattern>/*</url-pattern> </filter-mapping> EXAMPLES Redirect one
+		url <rule> <from>/some/old/page.html</from> <to
+		type="redirect">/very/new/page.html</to> </rule> Redirect a directory
+		<rule> <from>/some/olddir/(.*)</from> <to
+		type="redirect">/very/newdir/$1</to> </rule> Clean a url <rule>
+		<from>/products/([0-9]+)</from>
+		<to>/products/index.jsp?product_id=$1</to> </rule> eg, /products/1234
+		will be passed on to /products/index.jsp?product_id=1234 without the
+		user noticing. Browser detection <rule> <condition
+		name="user-agent">Mozilla/[1-4]</condition>
+		<from>/some/page.html</from> <to>/some/page-for-old-browsers.html</to>
+		</rule> eg, will pass the request for /some/page.html on to
+		/some/page-for-old-browsers.html only for older browsers whose user
+		agent srtings match Mozilla/1, Mozilla/2, Mozilla/3 or Mozilla/4.
+
+		Centralised browser detection <rule> <condition
+		name="user-agent">Mozilla/[1-4]</condition> <set type="request"
+		name="browser">moz</set> </rule> eg, all requests will be checked
+		against the condition and if matched request.setAttribute("browser",
+		"moz") will be called.
+	-->
+
+</urlrewrite>
+
