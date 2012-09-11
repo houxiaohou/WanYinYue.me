@@ -25,7 +25,7 @@
 			</div>
 			<a href="upload" class="uphead" title="上传吉他谱"><img
 					src="img/upload.png" width="40px" height="40px" /> </a>
-			<a href="signout" class="signout" title="退出登录"><img
+			<a href="logout" class="signout" title="退出登录"><img
 					src="img/signout.png" /> </a>
 		</div>
 	</s:else>

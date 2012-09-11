@@ -53,6 +53,9 @@
 			<result name="error">/tabError.jsp</result>
 			<result name="noUser" type="redirect">http://localhost</result> 
 		</action>
+		<action name="logout" class="authorizeAction" method="logout">
+			<result name="success" type="redirect">index</result>
+		</action>
 
 	</package>
 	
