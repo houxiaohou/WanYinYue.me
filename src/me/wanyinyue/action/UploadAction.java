@@ -79,7 +79,7 @@ public class UploadAction extends BaseAction {
 			} else {
 				String hql = "from me.wanyinyue.model.Tab t where t.name='"
 						+ name + "' and t.singer='" + singer
-						+ "' and t.tabPic.size <" + total + " and t.uploadUser ="
+						+ "' and t.tabPic.size < t.totalPicNum and t.uploadUser ="
 						+ u.getId();
 				List<Tab> tabs = tabManager.find(hql);
 				tab = tabs.get(0);
