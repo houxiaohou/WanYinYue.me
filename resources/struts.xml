@@ -62,7 +62,8 @@
 	<package name="ajax" extends="json-default">
 		<action name="authorize" class="authorizeAction" method="User">
 			<result type="json">
-				<param name="excludeNullProperties">error,success,errorMessage</param>
+				<param name="excludeNullProperties">true</param>
+				<param name="includeProperties">error,success,errorMessage</param>
 			</result>
 		</action>
 	</package>

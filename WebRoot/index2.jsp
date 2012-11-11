@@ -32,7 +32,7 @@
 							<s:iterator value="tabs">
 								<div class="tab_info">
 									<div class="tab">
-										<a href="tabs/${id}"> <img src="tabs/${id}_thumb.jpg">
+										<a href="tabs/${id}"> <img src="tab/${id}_thumb.jpg">
 											<s:if test=" tabPic.get(0).width >= 800">
 												<img src="img/hd.png" />
 											</s:if> </a>

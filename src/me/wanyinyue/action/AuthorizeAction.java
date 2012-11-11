@@ -42,7 +42,7 @@ public class AuthorizeAction extends BaseAction implements ServletRequestAware,
 	 */
 	private int error;
 	private String errorMessage;
-
+	
 	public String login() {
 		return SUCCESS;
 	}

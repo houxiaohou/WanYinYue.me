@@ -17,13 +17,13 @@ import me.wanyinyue.utils.ImageUtils;
 import me.wanyinyue.utils.MySessionContext;
 
 import org.apache.struts2.ServletActionContext;
+import org.hibernate.Query;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component(value = "uploadAction")
 @Scope(value = "prototype")
 public class UploadAction extends BaseAction {
-
 
 	/**
 	 * 
@@ -49,7 +49,8 @@ public class UploadAction extends BaseAction {
 	private static String BASEPATH = ServletActionContext.getServletContext()
 			.getRealPath("/");
 
-	public String uploadTab() throws Exception {
+	@SuppressWarnings("unchecked")
+	public String uploadTab() {
 		User u = null;
 		HttpSession session = null;
 		if (sess != null) {
@@ -65,43 +66,51 @@ public class UploadAction extends BaseAction {
 			return "login";
 		if (name != null && singer != null && total != null && order != null
 				&& Filedata != null) {
-			if (order.equals("1")) {
-				tab = new Tab();
-				tab.setName(name);
-				tab.setSinger(singer);
-				tab.setTotalPicNum(Integer.parseInt(total));
-				tab.setUploadUser(u);
-				if (u.getId() == 1)
-					tab.setFeatured(1);
-				else
-					tab.setFeatured(0);
-				tabManager.addTab(tab);
-			} else {
-				String hql = "from me.wanyinyue.model.Tab t where t.name='"
-						+ name + "' and t.singer='" + singer
-						+ "' and t.tabPic.size < t.totalPicNum and t.uploadUser ="
-						+ u.getId();
-				List<Tab> tabs = tabManager.find(hql);
-				tab = tabs.get(0);
+			try {
+				if (order.equals("1")) {
+					tab = new Tab();
+					tab.setName(name);
+					tab.setSinger(singer);
+					tab.setTotalPicNum(Integer.parseInt(total));
+					tab.setUploadUser(u);
+					if (u.getId() == 1)
+						tab.setFeatured(1);
+					else
+						tab.setFeatured(0);
+					tabManager.addTab(tab);
+				} else {
+					int userId = u.getId();
+					String hql = "from me.wanyinyue.model.Tab t where t.name =:name and t.singer =:singer and t.tabPic.size < t.totalPicNum and t.uploadUser =:uid";
+					Query query = tabManager.createQuery(hql);
+					query.setString("name", name);
+					query.setString("singer", singer);
+					query.setInteger("uid", userId);
+					List<Tab> tabs = (List<Tab>) query.list();
+					if (tabs.size() > 0) 
+						tab = tabs.get(0);
+				}
+				tabPic = new TabPic();
+				tabId = tab.getId();
+				String src = tabId + "_" + order + ".jpg";
+				String thumb = tabId + "_thumb" + ".jpg";
+				tabPic.setSrc(src);
+				tabPic.setTab(tab);
+				File srcFile = new File(Filedata);
+				String uploadPath = BASEPATH + "tab";
+				File toFile = new File(uploadPath, src);
+				File toThumbFile = new File(uploadPath, thumb);
+				BufferedImage bi = ImageIO.read(srcFile);
+				tabPic.setHeight(bi.getHeight());
+				tabPic.setWidth(bi.getWidth());
+				tabPicManager.addTabPic(tabPic);
+				imageUtils.saveSourceFile(srcFile, toFile);
+				if (order.equals("1"))
+					imageUtils.saveThumb(328, 482, toFile, toThumbFile);
+				return "success";
+			} catch (Exception e) {
+				e.printStackTrace();
+				return "error";
 			}
-			tabPic = new TabPic();
-			tabId = tab.getId();
-			String src = tabId + "_" + order + ".jpg";
-			String thumb = tabId + "_thumb" + ".jpg";
-			tabPic.setSrc(src);
-			tabPic.setTab(tab);
-			File srcFile = new File(Filedata);
-			String uploadPath = BASEPATH + "tabs";
-			File toFile = new File(uploadPath, src);
-			File toThumbFile = new File(uploadPath, thumb);
-			BufferedImage bi = ImageIO.read(srcFile);
-			tabPic.setHeight(bi.getHeight());
-			tabPic.setWidth(bi.getWidth());
-			tabPicManager.addTabPic(tabPic);
-			imageUtils.saveSourceFile(srcFile, toFile);
-			if (order.equals("1"))
-				imageUtils.saveThumb(328, 482, toFile, toThumbFile);
-			return "success";
 		} else {
 			return "input";
 		}
@@ -189,6 +198,5 @@ public class UploadAction extends BaseAction {
 	public void setTabId(int tabId) {
 		this.tabId = tabId;
 	}
-	
 
 }

@@ -30,14 +30,14 @@
 				<s:iterator value="tabPics">
 					<s:if test="width >= 1000">
 						<div class="tab_pic">
-							<img src="http://wanyinyue.me/tabs/${src}"
+							<img src="tab/${src}"
 								style="width: 1000px; height: "
 								alt="${tab.singer} ${tab.name} 吉他谱" />
 						</div>
 					</s:if>
 					<s:else>
 						<div class="tab_pic">
-							<img src="http://wanyinyue.me/tabs/${src}"
+							<img src="tab/${src}"
 								style="width:${width}px;height:${height};"
 								alt="${tab.singer} ${tab.name} 吉他谱" />
 						</div>
